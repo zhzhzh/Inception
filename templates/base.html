@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inception</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">-->
+    <!--<link href="{% static 'angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css' %}" rel="stylesheet">-->
+
+
+
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+
+    {% block custom_css %}{% endblock custom_css %}
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Inception</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'home:index' %}">Home</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    {% block content %}{% endblock content %}
+</div>
+
+<!-- jquery -->
+<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<!--<script src="{% static 'datatables/media/js/jquery.dataTables.min.js' %}"></script>-->
+<!--<script src="{% static 'datatables/media/js/dataTables.bootstrap.min.js' %}"></script>-->
+
+<!-- bootstrap -->
+<script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!--<script src="{% static 'bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>-->
+
+<!-- angular -->
+<script src="{% static 'angular/angular.min.js' %}"></script>
+<!--<script src="{% static 'angular-resource/angular-resource.min.js' %}"></script>-->
+<!--<script src="{% static 'angular-datatables/dist/angular-datatables.min.js' %}"></script>-->
+<!--<script src="{% static 'angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js' %}"></script>-->
+<!--<script src="{% static 'angular-bootstrap/ui-bootstrap.min.js' %}"></script>-->
+<!--<script src="{% static 'angular-bootstrap/ui-bootstrap-tpls.min.js' %}"></script>-->
+
+{% block custom_js %}{% endblock custom_js %}
+
+</body>
+</html>
