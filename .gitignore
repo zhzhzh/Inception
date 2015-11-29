@@ -56,5 +56,8 @@ docs/_build/
 # PyBuilder
 target/
 
+# custom ignore
 venv/
 bower_components/
+*/migrations/
+db.sqlite3
