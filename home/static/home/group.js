@@ -3,7 +3,8 @@
  */
 
 var app = angular.module('myApp', [
-    'ngResource'
+    'ngResource',
+    'checklist-model'
     //'datatables',
     //'datatables.bootstrap',
     //'ui.bootstrap'
@@ -23,10 +24,23 @@ app.factory('Members', function($resource) {
 app.controller('mainCtl', function($scope, Members) {
     $scope.members = Members.query();
 
-    $scope.teams = {
-        'T1': [],
-        'T2': []
-    }
+    $scope.team_list = ['Team1', 'Team2'];
 
+    $scope.teams = {
+        'Team1': [],
+        'Team2': []
+    };
+
+    $scope.team_index = 2;
+
+    $scope.add_team = function() {
+        $scope.team_index = $scope.team_index + 1;
+        var team = 'Team' + $scope.team_index;
+        $scope.team_list.push(team);
+        $scope.teams[team] = [];
+
+    };
+
+    $scope.attend_members = [];
 
 });

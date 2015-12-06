@@ -1,28 +1,64 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block custom_css %}{% endblock custom_css %}
+{% block custom_css %}
+<link href="{% static 'home/group.css' %}" rel="stylesheet">
+{% endblock custom_css %}
 
 {% block content %}
 <div class="container-fluid" ng-app="myApp" ng-controller="mainCtl">
     <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <h3>Members</h3>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="member in members">{$ member.nick_name $}</li>
-            </ul>
+        <div class="col-md-3">
+            <h3>成员列表</h3>
+
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>出席</th>
+                    <th>小队</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="member in members">
+                    <td>{$ member.nick_name $}</td>
+                    <td>
+                        <input type="checkbox" checklist-model="attend_members" checklist-value="member.name">
+                    </td>
+                    <td>
+                        <select>
+                            <option>待分队</option>
+                            <option ng-repeat="team in team_list">{$ team $}</option>
+                        </select>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
         </div>
 
-        <div class="col-md-8 col-sm-8">
+        <div class="col-md-9">
             <div class="row">
-                <div class="col-md-3">
-                    <h3>Teams</h3>
+                <div class="col-md-9">
+                    <h3>分队结果</h3>
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary">team</button>
+                <div class="col-md-3" style="margin-top: 15px">
+                    <button class="btn btn-primary" ng-click="add_team()"><i class="fa fa-plus"></i> 小队</button>
                 </div>
             </div>
 
+            <div>
+                {$ attend_members $}
+            </div>
+
+            <div class="row" ng-repeat="team in team_list">
+                <h4>{$ team $}</h4>
+                <div class="col-md-12">
+                    <div class="col-md-3" ng-repeat="item in [1,2,3,4,5,6,7,8]">
+                        item
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
