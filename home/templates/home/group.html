@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block custom_css %}{% endblock custom_css %}
+
+{% block content %}
+<div class="container-fluid" ng-app="myApp" ng-controller="mainCtl">
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <h3>Members</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="member in members">{$ member.nick_name $}</li>
+            </ul>
+        </div>
+
+        <div class="col-md-8 col-sm-8">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Teams</h3>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary">team</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block custom_js %}
+<script src="{% static 'home/group.js' %}"></script>
+{% endblock custom_js %}
