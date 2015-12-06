@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container-fluid" ng-app="myApp" ng-controller="mainCtl">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4" style="padding-right: 30px;">
             <h3>成员列表</h3>
 
             <table class="table table-bordered table-hover table-striped">
@@ -23,12 +23,12 @@
                 <tr ng-repeat="member in members">
                     <td>{$ member.nick_name $}</td>
                     <td>
-                        <input type="checkbox" checklist-model="attend_members" checklist-value="member.name">
+                        <input type="checkbox" checklist-model="attend_members" checklist-value="member.nick_name">
                     </td>
                     <td>
-                        <select>
-                            <option>待分队</option>
-                            <option ng-repeat="team in team_list">{$ team $}</option>
+                        <select ng-show="attend_members.indexOf(member.nick_name) != -1" ng-model="member_team_mapping[member.nick_name]">
+                            <option value="" selected>待分队</option>
+                            <option ng-repeat="team in team_list" value="{$ team $}">{$ team $}</option>
                         </select>
                     </td>
                 </tr>
@@ -37,25 +37,42 @@
             </table>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="row">
-                <div class="col-md-9">
-                    <h3>分队结果</h3>
-                </div>
-                <div class="col-md-3" style="margin-top: 15px">
-                    <button class="btn btn-primary" ng-click="add_team()"><i class="fa fa-plus"></i> 小队</button>
-                </div>
+                <h3>分队结果</h3>
             </div>
 
+
+
+            <div class="row well">
+                <div class="col-md-12">
+                    出席人员:<br>
+                    <ul id="member-tag-list">
+                        <li ng-repeat="member in attend_members">
+                            <span>{$ member $}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div>
-                {$ attend_members $}
+                {$ member_team_mapping $}
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <button class="btn btn-info" ng-click="add_team()"><i class="fa fa-plus"></i> 小队</button>
+                </div>
+
+                <div class="col-md-1">
+                    <button class="btn btn-success" ng-click="group_team()"><i class="fa fa-arrow-right"></i> 分组</button>
+                </div>
             </div>
 
             <div class="row" ng-repeat="team in team_list">
-                <h4>{$ team $}</h4>
+                <h4>{$ team $} -- {$ team_size[team] $}人</h4>
                 <div class="col-md-12">
-                    <div class="col-md-3" ng-repeat="item in [1,2,3,4,5,6,7,8]">
-                        item
+                    <div class="col-md-3" ng-repeat="name in teams[team]">
+                        {$ name $}
                     </div>
                 </div>
             </div>

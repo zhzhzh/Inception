@@ -5,3 +5,41 @@ h3 {
 th,td {
     text-align: center;
 }
+
+.member_label {
+    margin-right: 10px;
+}
+
+#member-tag-list li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #337ab7;
+    border-radius: 2px;
+    background: #337ab7;
+    padding: 2px 8px;
+    color: #ffffff;
+    margin: 5px 10px 0px 0px;
+}
+
+#member-tag-list li a {
+    margin-left: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#member-tag-list li a:active {
+    color: rgb(0, 0, 238);
+}
+
+#member-tag-list li span:nth-child(2) {
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+#member-tag-list {
+    margin: 0px;
+    padding: 0px;
+}
