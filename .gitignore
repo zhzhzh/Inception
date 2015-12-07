@@ -60,4 +60,4 @@ target/
 venv/
 bower_components/
 */migrations/
-db.sqlite3
+.idea/
