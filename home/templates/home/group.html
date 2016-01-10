@@ -46,7 +46,7 @@
 
             <div class="row well">
                 <div class="col-md-12">
-                    出席人员:<br>
+                    出席人员: {$ attend_members.length $}人<br>
                     <ul id="member-tag-list">
                         <li ng-repeat="member in attend_members">
                             <span>{$ member $}</span>
@@ -57,6 +57,7 @@
             <div>
                 {$ member_team_mapping $}
             </div>
+
 
             <div class="row">
                 <div class="col-md-1">
@@ -73,6 +74,17 @@
                 <div class="col-md-12">
                     <div class="col-md-3" ng-repeat="name in teams[team]">
                         {$ name $}
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row" ng-repeat="(team, data) in final_result">
+                <h4>{$ team $} -- {$ data.members.length $}人 -- {$ data.pos $}</h4>
+                <div class="col-md-12">
+                    <div class="col-md-3" ng-repeat="member in data.members">
+                        {$ member.nick_name $} - {$ member.pos1 $} - {$ member.top_star $}
                     </div>
                 </div>
             </div>

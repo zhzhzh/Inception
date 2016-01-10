@@ -61,7 +61,13 @@ app.controller('mainCtl', function($scope, Members) {
         caclTeamMember($scope.attend_members.length)
     };
 
-    $scope.attend_members = [];
+    //$scope.attend_members = ["陈老师", "文森特", "西门", "里克", "人品王", "天天", "华莱士", "姚俊", "线裤", "艾伦", "霉西",
+    //    "球霸", "鞋魔", "哪吒", "徐老师", "阿哥", "铁军", "队长", "太郎", "华仔", "金亮", "小舅子", "蓝少", "枭风"];
+    $scope.attend_members = ["陈老师", "文森特",  "里克", "人品王", "天天", "华莱士", "姚俊",  "艾伦", "霉西",
+        "球霸", "鞋魔", "哪吒",  "阿哥", "铁军", "队长", "太郎", "华仔", "金亮", "小舅子", "蓝少", "枭风"];
+
+    caclTeamMember($scope.attend_members.length);
+
     $scope.member_team_mapping = {};
 
     function removeFromTeams(name) {
@@ -122,8 +128,196 @@ app.controller('mainCtl', function($scope, Members) {
         }
     }, true);
 
+    function random_choose(max){
+        var x = Math.floor(Math.random() * max);
+        return x;
+    }
+
+    function add_member_to_team(member, team, member_list, team_list, un_grouped, tmp_teams) {
+        $scope.member_team_mapping[member.nick_name] = team;
+        member_list.splice(member_list.indexOf(member), 1);
+        team_list.splice(team_list.indexOf(team), 1);
+        un_grouped.splice(un_grouped.indexOf(member), 1);
+        tmp_teams[team]['members'].push(member);
+        tmp_teams[team]['pos'].push(member.pos1);
+        if (member.top_star) {
+            tmp_teams[team]['top_star'] += 1;
+        }
+    }
+
+    function random_member_to_team(member_list, team_list, un_grouped, tmp_teams) {
+        var member = member_list[random_choose(member_list.length)];
+        var team = team_list[random_choose(team_list.length)];
+
+        add_member_to_team(member, team, member_list, team_list, un_grouped, tmp_teams);
+    }
+
+    function has_member(member_list, key, value) {
+        return member_list.filter(function(member) {
+            if (key in member && member[key] == value) {
+                return true;
+            }
+        }).length > 0;
+    }
+
     $scope.group_team = function() {
         //TODO
+
+        // construct attend member map: nick_name => member object
+        var attend_member_map = {};
+        var length = $scope.members.length;
+        for (var i = 0; i < length; i ++) {
+            var member = $scope.members[i];
+            if ($scope.attend_members.indexOf(member.nick_name) >= 0) {
+                attend_member_map[member.nick_name] = member;
+            }
+        }
+
+        var tmp_teams = {};
+        var team_list = [];
+        var grouped = [];
+        for (var key in $scope.teams) {
+            var team_members = $scope.teams[key];
+            grouped = grouped.concat(team_members);
+            team_list.push(key);
+
+            tmp_teams[key] = {};
+            tmp_teams[key]['size'] = $scope.team_size[key];
+
+            tmp_teams[key]['members'] = [];
+            tmp_teams[key]['pos'] = [];
+            tmp_teams[key]['top_star'] = 0;
+
+            length = team_members.length;
+            for (i = 0; i < length; i++) {
+                tmp_teams[key]['members'].push(attend_member_map[team_members[i]]);
+            }
+        }
+        var team_number = team_list.length;
+
+        var un_grouped = [];
+        for (key in attend_member_map) {
+            member = attend_member_map[key];
+            if (grouped.indexOf(member.nick_name) < 0) {
+                un_grouped.push(member);
+            }
+
+        }
+
+        // top_star
+        var top_stars = un_grouped.filter(function(value) {
+            return value.top_star;
+        });
+
+        var top_star_num = top_stars.length;
+        var tmp_team_list = team_list.slice();
+        var team = undefined;
+        for (i = 0; i < top_star_num; i ++) {
+            if (tmp_team_list.length == 0) {
+                tmp_team_list = team_list.slice();
+            }
+            random_member_to_team(top_stars, tmp_team_list, un_grouped, tmp_teams);
+        }
+
+        // 守门员
+        // 如果top_star分配不均并且守门员中有'阿哥',优先随机分配'阿哥'
+        var goal_keepers = un_grouped.filter(function(value) {
+            return value.pos1 == '守门员';
+        });
+        var goal_keeper_num = goal_keepers.length;
+
+        var top_star_min = Math.floor(top_star_num / team_number);
+        var team_star_unbalanced = [];
+        if (top_star_num % team_number != 0) {
+            team_star_unbalanced = team_list.filter(function(value) {
+                return tmp_teams[value]['top_star'] == top_star_min;
+            });
+        }
+
+        var has_a_ge = has_member(goal_keepers, 'nick_name', '阿哥');
+        tmp_team_list = team_list.slice();
+        if (team_star_unbalanced.length != 0 && team_star_unbalanced.length < goal_keepers.length) {
+            if (has_a_ge) {
+                team = team_star_unbalanced[random_choose(team_star_unbalanced.length)];
+                member = attend_member_map['阿哥'];
+                add_member_to_team(member, team, goal_keepers, team_star_unbalanced, un_grouped, tmp_teams);
+                if (tmp_team_list.indexOf(team) > 0) {
+                    tmp_team_list.splice(tmp_team_list.indexOf(team), 1);
+                }
+            }
+        }
+
+        if (team_star_unbalanced.length != 0) {
+            tmp_team_list = team_star_unbalanced;
+        }
+
+        length = goal_keepers.length;
+        for (i = 0; i < length; i++) {
+            if (tmp_team_list.length == 0) {
+                tmp_team_list = team_list.slice();
+            }
+            random_member_to_team(goal_keepers, tmp_team_list, un_grouped, tmp_teams);
+        }
+
+        // 中后卫 cb
+        // 中后卫平均并随机分配到各组中，没有门将的组优先拿中后卫中的金亮
+        var cbs = un_grouped.filter(function(value) {
+            return value.pos1 == '中后卫';
+        });
+        var cbs_num = cbs.length;
+
+        var team_no_keeper = [];
+        tmp_team_list = team_list.slice();
+        if (goal_keeper_num < team_number) {
+            team_no_keeper = team_list.filter(function(value) {
+                return tmp_teams[value]['pos'].indexOf('守门员') < 0;
+            });
+
+            var has_jin_liang = has_member(cbs, 'nick_name', '金亮');
+            if (has_jin_liang) {
+                member = attend_member_map['金亮'];
+                team = team_no_keeper[random_choose(team_no_keeper.length)];
+                add_member_to_team(member, team, cbs, team_no_keeper, un_grouped, tmp_teams);
+                tmp_team_list.splice(tmp_team_list.indexOf(team), 1);
+            }
+        }
+
+        if (team_no_keeper.length > 0) {
+            tmp_team_list = team_no_keeper;
+        }
+
+        length = cbs.length;
+        for (i = 0; i < length; i++) {
+            if (tmp_team_list.length == 0) {
+                tmp_team_list = team_list.slice();
+            }
+
+            random_member_to_team(cbs, tmp_team_list, un_grouped, tmp_teams);
+        }
+
+        // 防守型中场 dm
+        // 防守型中场平均并随机分配到各组中，没有中卫的组优先拿铁军
+        var dms = un_grouped.filter(function(value) {
+            return value.pos1 == '防守型中场';
+        });
+        var dms_num = dms.length;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Output:
+        $scope.final_result = tmp_teams
     };
 
 });
