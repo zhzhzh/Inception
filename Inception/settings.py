@@ -82,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'inception',
-        'USER': 'rick',
+        'USER': 'admin',
         'PASSWORD': '918911',
-        'HOST': '192.168.1.100',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
