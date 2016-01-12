@@ -84,7 +84,8 @@
                 <h4>{$ team $} -- {$ data.members.length $}人 -- {$ data.pos $}</h4>
                 <div class="col-md-12">
                     <div class="col-md-3" ng-repeat="member in data.members">
-                        {$ member.nick_name $} - {$ member.pos1 $} - {$ member.top_star $}
+                        <span ng-if="member.top_star">*</span>
+                        {$ member.nick_name $} - {$ member.pos1 $}
                     </div>
                 </div>
             </div>
