@@ -25,7 +25,7 @@ def get_members(request):
     ret_list = []
     for member in Member.objects.all():
         ret_list.append(member.as_json())
-    print ret_list
+    # print ret_list
     return JsonResponse(ret_list, safe=False)
 
 
