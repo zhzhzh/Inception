@@ -5,17 +5,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Inception</title>
+    <title>FC DDH1860</title>
+    <link href="{% static 'pic/Tiny_Logo_FC_DDH1860.jpg' %}" rel="shortcut icon">
 
     <!-- Bootstrap -->
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
     <!--<link href="{% static 'bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">-->
     <!--<link href="{% static 'angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css' %}" rel="stylesheet">-->
 
-
-
     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
 
+
+    <link href="{% static 'base.css' %}" rel="stylesheet">
     {% block custom_css %}{% endblock custom_css %}
 </head>
 <body>
@@ -29,13 +30,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Inception</a>
+            <a class="navbar-brand" href="{% url 'home:index' %}">FC DDH1860</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'home:index' %}">Home</a></li>
-                <li><a href="{% url 'home:group' %}">Group</a></li>
+                <!--<li><a href="{% url 'home:index' %}">Home</a></li>-->
+                <li><a href="{% url 'home:group' %}">分组</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
