@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container-fluid" ng-app="myApp" ng-controller="mainCtl">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-heading">成员列表</div>
                 <div class="panel-body">
@@ -41,9 +41,9 @@
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-8">
             <div class="row well" style="margin-left: 0px; margin-right: 0px">
-                <img class="col-md-12" src="{% static 'pic/FC DDH1860 Slogan.jpeg' %}" alt="...">
+                <img src="{% static 'pic/FC DDH1860 Slogan.jpeg' %}" alt="..." style="height: 80px">
             </div>
 
 
@@ -64,12 +64,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">分组结果</div>
                 <div class="panel-body">
-                    <div class="row col-md-12 margin-bottom-15">
+                    <div class="row col-md-12 col-sd-12 margin-bottom-15">
                         <button class="btn btn-info" ng-click="add_team()"><i class="fa fa-plus"></i> 小队</button>
                         <button class="btn btn-success" ng-click="group_team()"><i class="fa fa-arrow-right"></i> 分组</button>
                     </div>
 
-                    <div class="row col-md-12">
+                    <div class="row col-md-12 col-sd-12">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -79,7 +79,7 @@
                             <tbody>
                             <tr>
                                 <td ng-repeat="team in team_list">
-                                    <div class="col-md-4" ng-repeat="name in teams[team]">
+                                    <div class="col-md-4 col-sd-4" ng-repeat="name in teams[team]">
                                         {$ name $}
                                     </div>
                                 </td>
