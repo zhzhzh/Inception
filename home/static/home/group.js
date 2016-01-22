@@ -65,8 +65,8 @@ app.controller('mainCtl', function($scope, Members) {
 
     //$scope.attend_members = ["陈老师", "文森特", "西门", "里克", "人品王", "天天", "华莱士", "姚俊", "线裤", "艾伦", "霉西",
     //    "球霸", "鞋魔", "哪吒", "徐老师", "阿哥", "铁军", "队长", "太郎", "华仔", "金亮", "小舅子", "蓝少", "枭风"];
-    //$scope.attend_members = ["陈老师", "文森特",  "里克", "人品王", "天天", "华莱士", "姚俊",  "艾伦", "霉西",
-    //    "球霸", "鞋魔", "哪吒",  "阿哥", "铁军", "队长", "太郎", "华仔", "金亮", "小舅子", "蓝少", "枭风"];
+    //$scope.attend_members = ["队长", "里克", "阿哥", "天天", "鞋魔", "蓝少", "哪吒", "蒂姆", "戈登", "球霸", "线裤",
+    // "铁塔", "大派", "艾里克", "董", "亨利", "枭风", "小林", "球球", "弗莱明", "艾伦", "金吒", "木吒", "霉西"];
 
     caclTeamMember($scope.attend_members.length);
 
@@ -242,8 +242,8 @@ app.controller('mainCtl', function($scope, Members) {
         ];
 
         var loop_length = grouping_conf.length;
-        for(var loop_i = 0; i < loop_length; i++) {
-            var conf = grouping_conf[i];
+        for(var loop_i = 0; loop_i < loop_length; loop_i++) {
+            var conf = grouping_conf[loop_i];
             var pos = conf['pos'];
 
 
