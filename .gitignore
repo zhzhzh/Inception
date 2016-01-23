@@ -59,5 +59,8 @@ target/
 # custom ignore
 venv/
 bower_components/
-*/migrations/
+# */migrations/
 .idea/
+
+# sqlite db
+db.inception
