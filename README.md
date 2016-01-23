@@ -9,3 +9,7 @@
 6. bower install
 7. python manage.py migrate
 8. python runserver 0.0.0.0:8787
+
+### Admin
+python manage.py createsuperuser
+admin/admin
