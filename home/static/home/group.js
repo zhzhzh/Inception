@@ -26,6 +26,12 @@ app.controller('mainCtl', function($scope, Members) {
 
     $scope.team_list = ['Team1', 'Team2'];
 
+    $scope.jersey_files = {
+        'r': 'Red_Jersey_Icon.jpg',
+        'b': 'Blue_Jersey_Icon.jpg',
+        'y': 'Yellow_Jersey_Icon.jpg'
+    };
+
     $scope.teams = {
         'Team1': [],
         'Team2': []
@@ -36,6 +42,8 @@ app.controller('mainCtl', function($scope, Members) {
         'Team1': 0,
         'Team2': 0
     };
+
+    $scope.has_blue = false;
 
     function caclTeamMember(number) {
         var base = parseInt(number / $scope.team_index);
@@ -186,7 +194,6 @@ app.controller('mainCtl', function($scope, Members) {
     }
 
     $scope.group_team = function() {
-        //TODO
 
         // construct attend member map: nick_name => member object
         var attend_member_map = {};
@@ -307,113 +314,41 @@ app.controller('mainCtl', function($scope, Members) {
                 }
 
                 add_member_to_team(member, team, loop_members, loop_teams, un_grouped, tmp_teams);
-
             }
-
-
         }
 
+        // process Jersey
+        if ($scope.attend_members.indexOf('蓝少') >= 0) {
+            $scope.has_blue = true;
+        }
 
-        // top_star
-        //var top_stars = un_grouped.filter(function(value) {
-        //    return value.top_star;
-        //});
-        //
-        //var top_star_num = top_stars.length;
-        //var tmp_team_list = team_list.slice();
-        //var team = undefined;
-        //for (i = 0; i < top_star_num; i ++) {
-        //    if (tmp_team_list.length == 0) {
-        //        tmp_team_list = team_list.slice();
-        //    }
-        //    random_member_to_team(top_stars, tmp_team_list, un_grouped, tmp_teams);
-        //}
-        //
-        //// 守门员
-        //// 如果top_star分配不均并且守门员中有'阿哥',优先随机分配'阿哥'
-        //var goal_keepers = un_grouped.filter(function(value) {
-        //    return value.pos1 == '守门员';
-        //});
-        //var goal_keeper_num = goal_keepers.length;
-        //
-        //var top_star_min = Math.floor(top_star_num / team_number);
-        //var team_star_unbalanced = [];
-        //if (top_star_num % team_number != 0) {
-        //    team_star_unbalanced = team_list.filter(function(value) {
-        //        return tmp_teams[value]['top_star'] == top_star_min;
-        //    });
-        //}
-        //
-        //var has_a_ge = has_member(goal_keepers, 'nick_name', '阿哥');
-        //tmp_team_list = team_list.slice();
-        //if (team_star_unbalanced.length != 0 && team_star_unbalanced.length < goal_keepers.length) {
-        //    if (has_a_ge) {
-        //        team = team_star_unbalanced[random_choose(team_star_unbalanced.length)];
-        //        member = attend_member_map['阿哥'];
-        //        add_member_to_team(member, team, goal_keepers, team_star_unbalanced, un_grouped, tmp_teams);
-        //        if (tmp_team_list.indexOf(team) > 0) {
-        //            tmp_team_list.splice(tmp_team_list.indexOf(team), 1);
-        //        }
-        //    }
-        //}
-        //
-        //if (team_star_unbalanced.length != 0) {
-        //    tmp_team_list = team_star_unbalanced;
-        //}
-        //
-        //length = goal_keepers.length;
-        //for (i = 0; i < length; i++) {
-        //    if (tmp_team_list.length == 0) {
-        //        tmp_team_list = team_list.slice();
-        //    }
-        //    random_member_to_team(goal_keepers, tmp_team_list, un_grouped, tmp_teams);
-        //}
-        //
-        //// 中后卫 cb
-        //// 中后卫平均并随机分配到各组中，没有门将的组优先拿中后卫中的金亮
-        //var cbs = un_grouped.filter(function(value) {
-        //    return value.pos1 == '中后卫';
-        //});
-        //var cbs_num = cbs.length;
-        //
-        //var team_no_keeper = [];
-        //tmp_team_list = team_list.slice();
-        //if (goal_keeper_num < team_number) {
-        //    team_no_keeper = team_list.filter(function(value) {
-        //        return tmp_teams[value]['pos'].indexOf('守门员') < 0;
-        //    });
-        //
-        //    var has_jin_liang = has_member(cbs, 'nick_name', '金亮');
-        //    if (has_jin_liang) {
-        //        member = attend_member_map['金亮'];
-        //        team = team_no_keeper[random_choose(team_no_keeper.length)];
-        //        add_member_to_team(member, team, cbs, team_no_keeper, un_grouped, tmp_teams);
-        //        tmp_team_list.splice(tmp_team_list.indexOf(team), 1);
-        //    }
-        //}
-        //
-        //if (team_no_keeper.length > 0) {
-        //    tmp_team_list = team_no_keeper;
-        //}
-        //
-        //length = cbs.length;
-        //for (i = 0; i < length; i++) {
-        //    if (tmp_team_list.length == 0) {
-        //        tmp_team_list = team_list.slice();
-        //    }
-        //
-        //    random_member_to_team(cbs, tmp_team_list, un_grouped, tmp_teams);
-        //}
-        //
-        //// 防守型中场 dm
-        //// 防守型中场平均并随机分配到各组中，没有中卫的组优先拿铁军
-        //var dms = un_grouped.filter(function(value) {
-        //    return value.pos1 == '防守型中场';
-        //});
-        //var dms_num = dms.length;
+        var jersey_list = ['b', 'y', 'r'];
+        var tmp_team_list = $scope.team_list.filter(function(value) {return true});
+        if ($scope.team_index <= 2) {
+            jersey_list = ['b', 'y'];
+        }
 
+        if ($scope.has_blue) {
+            var index = $scope.team_list.length;
+            while (index--) {
+                team = $scope.team_list[index];
+                if (has_member(tmp_teams[team]['members'], 'nick_name', '蓝少')) {
+                    tmp_teams[team]['jersey'] = 'b';
+                    jersey_list.splice(jersey_list.indexOf('b'), 1);
+                    tmp_team_list = $scope.team_list.filter(function(value) {return value != team});
+                    break;
+                }
+            }
+        }
 
-
+        index = tmp_team_list.length;
+        while (index--) {
+            var jersey = jersey_list[random_choose(jersey_list.length)];
+            jersey_list.splice(jersey_list.indexOf(jersey), 1);
+            team = tmp_team_list[random_choose(tmp_team_list.length)];
+            tmp_team_list.splice(tmp_team_list.indexOf(team), 1);
+            tmp_teams[team]['jersey'] = jersey;
+        }
 
         // Output:
         $scope.final_result = tmp_teams

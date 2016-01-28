@@ -43,3 +43,21 @@ th,td {
     margin: 0px;
     padding: 0px;
 }
+
+#team_table {
+    border: 3px solid #9d9d9d;
+}
+
+#team_table th {
+    border: 3px solid #9d9d9d;
+    font-size: 16px;
+}
+
+#team_table td {
+    border: 3px solid #9d9d9d;
+    font-weight: bold;
+}
+
+.img_jersey {
+    width: 40px;
+}

@@ -65,15 +65,21 @@
                 <div class="panel-heading">分组结果</div>
                 <div class="panel-body">
                     <div class="row col-md-12 col-sd-12 margin-bottom-15">
-                        <button class="btn btn-info" ng-click="add_team()"><i class="fa fa-plus"></i> 小队</button>
-                        <button class="btn btn-success" ng-click="group_team()"><i class="fa fa-arrow-right"></i> 分组</button>
+                        <button class="btn btn-info" ng-click="add_team()" ng-disabled="team_index >= 3">
+                            <i class="fa fa-plus"></i> 小队
+                        </button>
+                        <button class="btn btn-success" ng-click="group_team()">
+                            <i class="fa fa-arrow-right"></i> 分组
+                        </button>
                     </div>
 
                     <div class="row col-md-12 col-sd-12">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="team_table">
                             <thead>
                             <tr>
-                                <th ng-repeat="team in team_list">{$ team $} -- {$ team_size[team] $}人</th>
+                                <th ng-repeat="team in team_list">{$ team $} -- {$ team_size[team] $}人
+                                    <img ng-src="/static/pic/{$ jersey_files[final_result[team]['jersey']] $}" class="img_jersey">
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
