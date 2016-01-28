@@ -10,6 +10,7 @@ class Member(models.Model):
         ('防守型中场', '防守型中场'),
         ('攻击型中场', '攻击型中场'),
         ('前锋', '前锋'),
+        ('特殊', '特殊'),
     )
 
     name = models.CharField(max_length=32, unique=True, null=False)
