@@ -61,3 +61,7 @@ th,td {
 .img_jersey {
     width: 40px;
 }
+
+.btn-sm {
+    padding: 0px 5px;
+}

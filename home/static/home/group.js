@@ -80,6 +80,12 @@ app.controller('mainCtl', function($scope, Members) {
 
     $scope.member_team_mapping = {};
 
+    $scope.reset = function() {
+        for (var member in $scope.member_team_mapping) {
+            $scope.member_team_mapping[member] = "";
+        }
+    };
+
     function removeFromTeams(name) {
         for (var key in $scope.teams) {
             var index = $scope.teams[key].indexOf(name);
