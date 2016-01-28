@@ -250,16 +250,14 @@ app.controller('mainCtl', function($scope, Members) {
             { pos: '防守型中场', dep: '中后卫', exception: ['铁军'] },
             { pos: '攻击型中场', dep: '防守型中场', exception: ['弗莱明', '里克'] },
             { pos: '前锋' },
-            { pos: '边后卫' },
-            { pos: '特殊' }
-
+            { pos: '特殊' },
+            { pos: '边后卫' }
         ];
 
         var loop_length = grouping_conf.length;
         for(var loop_i = 0; loop_i < loop_length; loop_i++) {
             var conf = grouping_conf[loop_i];
             var pos = conf['pos'];
-
 
             var loop_members = un_grouped.filter(function (value) {
                 if (pos == 'top_star') {
