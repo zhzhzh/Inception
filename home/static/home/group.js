@@ -249,8 +249,8 @@ app.controller('mainCtl', function($scope, Members) {
             { pos: '中后卫', dep: '守门员', exception: ['金亮'] },
             { pos: '防守型中场', dep: '中后卫', exception: ['铁军'] },
             { pos: '攻击型中场', dep: '防守型中场', exception: ['弗莱明', '里克'] },
-            { pos: '前锋' },
             { pos: '特殊' },
+            { pos: '前锋' },
             { pos: '边后卫' }
         ];
 
