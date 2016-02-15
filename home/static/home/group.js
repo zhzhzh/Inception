@@ -49,15 +49,31 @@ app.controller('mainCtl', function($scope, Members) {
         var base = parseInt(number / $scope.team_index);
         var mod = number % $scope.team_index;
 
+        //for (var i = 0; i < $scope.team_list.length; i++) {
+        //    var team = $scope.team_list[i];
+        //    if (mod == 0) {
+        //        $scope.team_size[team] = base;
+        //    } else {
+        //        $scope.team_size[team] = base + 1;
+        //        mod = mod - 1
+        //    }
+        //}
+
         for (var i = 0; i < $scope.team_list.length; i++) {
             var team = $scope.team_list[i];
-            if (mod == 0) {
-                $scope.team_size[team] = base;
-            } else {
-                $scope.team_size[team] = base + 1;
-                mod = mod - 1
-            }
+            $scope.team_size[team] = base;
         }
+
+        var tmp_teams = $scope.team_list.slice();
+        while (mod > 0) {
+            var team_index = random_choose($scope.team_index);
+            team = $scope.team_list[team_index];
+            tmp_teams.splice(team_index, 1);
+            $scope.team_size[team] = base + 1;
+            mod = mod - 1;
+        }
+
+
     }
 
     $scope.add_team = function() {
@@ -73,8 +89,7 @@ app.controller('mainCtl', function($scope, Members) {
 
     //$scope.attend_members = ["陈老师", "文森特", "西门", "里克", "人品王", "天天", "华莱士", "姚俊", "线裤", "艾伦", "霉西",
     //    "球霸", "鞋魔", "哪吒", "徐老师", "阿哥", "铁军", "队长", "太郎", "华仔", "金亮", "小舅子", "蓝少", "枭风"];
-    //$scope.attend_members = ["队长", "里克", "阿哥", "天天", "鞋魔", "蓝少", "哪吒", "蒂姆", "戈登", "球霸", "线裤",
-    // "铁塔", "大派", "艾里克", "董", "亨利", "枭风", "小林", "球球", "弗莱明", "艾伦", "金吒", "木吒", "霉西"];
+    //$scope.attend_members = ["陈老师","本本","文森特","西门","里克","人品王","德里克","华莱士","线裤","球霸","鞋魔","阿哥","铁军","队长","小林","小P","弗莱明","戈登","枭风","蒂姆","哪吒"];
 
     caclTeamMember($scope.attend_members.length);
 
