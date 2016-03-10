@@ -21,6 +21,17 @@ app.factory('Members', function($resource) {
 });
 
 
+app.filter('f_number', function() {
+   return function (input) {
+       if (input == 101) {
+           return 'NA'
+       } else {
+           return input;
+       }
+   }
+});
+
+
 app.controller('mainCtl', function($scope, Members) {
     $scope.members = Members.query();
 

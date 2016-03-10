@@ -65,3 +65,9 @@ th,td {
 .btn-sm {
     padding: 0px 5px;
 }
+
+.member_panel {
+    padding: 0;
+    height: 800px;
+    overflow-y: scroll;
+}
