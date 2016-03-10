@@ -89,7 +89,7 @@ app.controller('mainCtl', function($scope, Members) {
 
     //$scope.attend_members = ["陈老师", "文森特", "西门", "里克", "人品王", "天天", "华莱士", "姚俊", "线裤", "艾伦", "霉西",
     //    "球霸", "鞋魔", "哪吒", "徐老师", "阿哥", "铁军", "队长", "太郎", "华仔", "金亮", "小舅子", "蓝少", "枭风"];
-    //$scope.attend_members = ["陈老师","本本","文森特","西门","里克","人品王","德里克","华莱士","线裤","球霸","鞋魔","阿哥","铁军","队长","小林","小P","弗莱明","戈登","枭风","蒂姆","哪吒"];
+    //$scope.attend_members = ["队长","天天","枭风","球球","文森特","弗莱明","金亮","亨利","里克","蓝少","线裤","西门","艾里克","太郎","阿哥","鞋魔","铁塔","徐老师","大派","德里克","艾伦","球霸","木吒","宝刚","蒂姆","小P"];
 
     caclTeamMember($scope.attend_members.length);
 
@@ -170,7 +170,7 @@ app.controller('mainCtl', function($scope, Members) {
         } else{
             var star = ''
         }
-        console.log(star + member.nick_name + '|' + member.pos1 + '-->' + team);
+        console.log(star + member.nick_name + '|' + member.pos1 + '-->' + team + ' ## [' + team_list + ']');
         $scope.member_team_mapping[member.nick_name] = team;
         member_list.splice(member_list.indexOf(member), 1);
         team_list.splice(team_list.indexOf(team), 1);
@@ -206,7 +206,7 @@ app.controller('mainCtl', function($scope, Members) {
     function get_teams_without_pos(team_list, pos, tmp_teams) {
         var teams = get_teams_no_full(team_list, tmp_teams);
         return teams.filter(function(value) {
-            if (pos == 'top_start') {
+            if (pos == 'top_star') {
                 return tmp_teams[value]['top_star'] == 0
             } else {
                 return tmp_teams[value]['pos'].indexOf(pos) < 0
@@ -244,10 +244,13 @@ app.controller('mainCtl', function($scope, Members) {
             length = team_members.length;
             for (i = 0; i < length; i++) {
                 tmp_teams[key]['members'].push(attend_member_map[team_members[i]]);
+                if (attend_member_map[team_members[i]]['top_star']) {
+                    tmp_teams[key]['top_star'] += 1;
+                }
             }
         }
-        var team_number = team_list.length;
 
+        var team_number = team_list.length;
         var un_grouped = [];
         for (key in attend_member_map) {
             member = attend_member_map[key];
@@ -262,7 +265,7 @@ app.controller('mainCtl', function($scope, Members) {
             { pos: 'top_star'},
             { pos: '守门员', dep: 'top_star', exception: ['阿哥'] },
             { pos: '中后卫', dep: '守门员', exception: ['金亮'] },
-            { pos: '防守型中场', dep: '中后卫', exception: ['铁军'] },
+            { pos: '防守型中场', dep: '中后卫', exception: ['铁军'], follow_pre: true },
             { pos: '攻击型中场'},
             //{ pos: '攻击型中场', dep: '防守型中场', exception: ['弗莱明', '里克'] },
             { pos: '边后卫' },
@@ -271,6 +274,7 @@ app.controller('mainCtl', function($scope, Members) {
         ];
 
         var loop_length = grouping_conf.length;
+        var loop_teams = undefined;
         for(var loop_i = 0; loop_i < loop_length; loop_i++) {
             var conf = grouping_conf[loop_i];
             var pos = conf['pos'];
@@ -287,7 +291,9 @@ app.controller('mainCtl', function($scope, Members) {
 
             var round = 0;
 
-            var loop_teams = undefined;
+            if (!('follow_pre' in conf && conf['follow_pre'])) {
+                loop_teams = undefined;
+            }
 
             while (loop_members.length > 0) {
                 var member = undefined;
@@ -307,6 +313,10 @@ app.controller('mainCtl', function($scope, Members) {
                         }
                         if (loop_teams == undefined) {
                             loop_teams = get_teams_without_pos(team_list, conf['dep'], tmp_teams);
+                        } else {
+                            if ('follow_pre' in conf && conf['follow_pre']) {
+                                loop_teams = get_teams_without_pos(loop_teams, pos, tmp_teams);
+                            }
                         }
                     } else { // get teams have no this pos
                         loop_teams = get_teams_without_pos(team_list, pos, tmp_teams)
@@ -372,6 +382,6 @@ app.controller('mainCtl', function($scope, Members) {
 
         // Output:
         $scope.final_result = tmp_teams
-    };
+    }
 
 });
