@@ -80,7 +80,7 @@ Member.objects.bulk_create([
            pos1='前锋', pos2='攻击型中场', pos3='',
            top_star=1, all_pos=0, stamina=1, athletic=0),
     Member(name='xu', name_chn='徐斌', nick_name='徐老师', number=23,
-           pos1='中后卫', pos2='边后卫', pos3='防守型中场',
+           pos1='边后卫', pos2='中后卫', pos3='防守型中场',
            top_star=0, all_pos=1, stamina=0, athletic=0),
     Member(name='brother', name_chn='沈斌', nick_name='阿哥', number=24,
            pos1='守门员', pos2='前锋', pos3='',
