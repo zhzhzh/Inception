@@ -71,3 +71,7 @@ th,td {
     height: 800px;
     overflow-y: scroll;
 }
+
+.table_member {
+    padding: 0;
+}
