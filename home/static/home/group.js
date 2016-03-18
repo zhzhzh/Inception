@@ -96,7 +96,7 @@ app.controller('mainCtl', function($scope, Members) {
 
     $scope.attend_members = [];
 
-    //$scope.attend_members = ["队长","里克","阿哥","天天","太郎","文森特","弗莱明","鞋魔","蒂姆","蓝少","小P","哪吒","大派","线裤","霉西","艾里克","枭风","徐老师","亨利","人品王","本本","金亮","董" ];
+    //$scope.attend_members = ["队长","里克","阿哥","天天","铁塔","蓝少","鞋魔","哪吒","艾伦","FLM","蒂姆","小P","球霸","徐老师","枭风","霉西","铁军","德里克","大派","艾里克","董" ];
 
     caclTeamMember($scope.attend_members.length);
 
@@ -310,7 +310,12 @@ app.controller('mainCtl', function($scope, Members) {
                     round += 1;
                     if ('dep' in conf) { // get teams have no dep pos
                         if (conf['dep'] == 'top_star') { // 获取top star分配不均的team
-                            var top_star_num = grouping_conf[0]['number'];
+                            //var top_star_num = grouping_conf[0]['number'];
+                            var top_star_num = 0;
+                            for (var team_i = 0; team_i < $scope.team_index; team_i++) {
+                                top_star_num += tmp_teams[$scope.team_list[team_i]]['top_star'];
+                            }
+
                             if (top_star_num % team_number != 0) {
                                 var top_star_min = Math.floor(top_star_num / team_number);
                                 loop_teams = team_list.filter(function(value) {
