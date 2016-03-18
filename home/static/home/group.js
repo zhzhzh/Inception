@@ -108,6 +108,19 @@ app.controller('mainCtl', function($scope, Members) {
         }
     };
 
+    $scope.input_members = "";
+    $scope.add_member = function() {
+        var input_list = $scope.input_members.split('，');
+        if (input_list.length > 1) {
+            $scope.attend_members = input_list;
+            return
+        }
+        input_list = $scope.input_members.split(',');
+        if (input_list.length > 1) {
+            $scope.attend_members = input_list;
+        }
+    };
+
     function removeFromTeams(name) {
         for (var key in $scope.teams) {
             var index = $scope.teams[key].indexOf(name);
