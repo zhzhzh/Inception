@@ -143,7 +143,7 @@ Member.objects.bulk_create([
            pos1='攻击型中场', pos2='边后卫', pos3='防守型中场',
            top_star=0, all_pos=0, stamina=0, athletic=0),
     Member(name='wind', name_chn='李靓', nick_name='枭风', number=101,
-           pos1='边后卫', pos2='', pos3='',
+           pos1='特殊', pos2='', pos3='',
            top_star=0, all_pos=0, stamina=0, athletic=0),
     Member(name='gorden', name_chn='顾剑锋', nick_name='戈登', number=101,
            pos1='攻击型中场', pos2='攻击型中场', pos3='',
