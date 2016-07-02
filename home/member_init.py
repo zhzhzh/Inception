@@ -161,7 +161,7 @@ Member.objects.bulk_create([
            pos1='特殊', pos2='', pos3='',
            top_star=0, all_pos=0, stamina=0, athletic=0),
     Member(name='ball', name_chn='许敏', nick_name='球球', number=101,
-           pos1='守门员', pos2='防守型中场', pos3='边后卫',
+           pos1='中后卫', pos2='防守型中场', pos3='边后卫',
            top_star=0, all_pos=1, stamina=0, athletic=0),
 ])
 
