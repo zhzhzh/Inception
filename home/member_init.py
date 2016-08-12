@@ -163,6 +163,9 @@ Member.objects.bulk_create([
     Member(name='ball', name_chn='许敏', nick_name='球球', number=101,
            pos1='中后卫', pos2='防守型中场', pos3='边后卫',
            top_star=0, all_pos=1, stamina=0, athletic=0),
+    Member(name='kevin', name_chn='裔立峰', nick_name='凯文', number=101,
+           pos1='攻击型中场', pos2='边后卫', pos3='',
+           top_star=0, all_pos=1, stamina=0, athletic=0),
 ])
 
 print('Done')
