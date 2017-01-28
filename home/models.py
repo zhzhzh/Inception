@@ -13,6 +13,17 @@ class Member(models.Model):
         ('特殊', '特殊'),
     )
 
+    GRADE_CHOICES = (
+        (1, '单箭头'),
+        (2, '天王巨星'),
+        (3, '守门员'),
+        (4, '后防中坚'),
+        (5, '高效前场'),
+        (6, '靠谱后场'),
+        (7, '中规中矩'),
+        (8, '背锅一派')
+    )
+
     name = models.CharField(max_length=32, unique=True, null=False)
     name_chn = models.CharField(max_length=32, null=False, verbose_name='姓名')
     nick_name = models.CharField(max_length=32, unique=True, null=False, verbose_name='昵称')
@@ -24,6 +35,7 @@ class Member(models.Model):
     all_pos = models.BooleanField(default=False, verbose_name='全能战士')
     stamina = models.BooleanField(default=False, verbose_name='体能狂魔')
     athletic = models.BooleanField(default=False, verbose_name='体格达人')
+    grade = models.SmallIntegerField(null=False, choices=GRADE_CHOICES, verbose_name='球员类型', default=0)
 
     class Meta:
         db_table = 'member'
@@ -31,7 +43,7 @@ class Member(models.Model):
 
     def __unicode__(self):
         if self.number < 100:
-            return str(self.number) + '.' + self.nick_name
+            return '{}.{}'.format(self.number, self.nick_name)
         else:
             return self.nick_name
 
