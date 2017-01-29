@@ -96,7 +96,7 @@ app.controller('mainCtl', function($scope, Members) {
 
     $scope.attend_members = [];
 
-    $scope.attend_members = ["队长","里克","阿哥","天天","铁塔","蓝少","鞋魔","哪吒","艾伦","弗莱明","蒂姆","小P","球霸","徐老师","枭风","霉西","铁军","德里克","大派","艾里克","董" ];
+//    $scope.attend_members = ["队长","里克","阿哥","天天","铁塔","蓝少","鞋魔","哪吒","艾伦","弗莱明","蒂姆","小P","球霸","徐老师","枭风","霉西","铁军","德里克","大派","艾里克","董" ];
 
     caclTeamMember($scope.attend_members.length);
 
