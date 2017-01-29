@@ -132,9 +132,11 @@ app.controller('mainCtl', function($scope, Members) {
     }
 
     function addToTeam(name, team) {
-        removeFromTeams(name);
+//        removeFromTeams(name);
         var team_list = $scope.teams[team];
-        team_list.push(name);
+        if (team_list.indexOf(name) < 0) {
+            team_list.push(name);
+        }
     }
 
 
@@ -157,14 +159,15 @@ app.controller('mainCtl', function($scope, Members) {
     }, true);
 
     $scope.$watch('member_team_mapping', function(newValue, oldValue) {
-        console.log('newValue' + newValue);
-        console.log('oldValue' + oldValue);
-        var newSize = newValue.size;
-        var oldSize = oldValue.size;
-
-        if (newSize != oldSize) {
+        var newSize = Object.keys(newValue).length;
+        var oldSize = Object.keys(oldValue).length;
+        if (newSize == 0 && oldSize == 0) {
             return;
         }
+
+//        if (newSize != oldSize) {
+//            return;
+//        }
 
         for (var i = 0; i < $scope.attend_members.length; i++) {
             var name = $scope.attend_members[i];
@@ -213,6 +216,7 @@ app.controller('mainCtl', function($scope, Members) {
         }
         console.log(star + member.nick_name + '|G' + member.grade + '|P' + member.pos1 + '-->' + team);
         $scope.member_team_mapping[member.nick_name] = team;
+        addToTeam(member.nick_name, team);
         un_grouped.splice(un_grouped.indexOf(member), 1);
         tmp_teams[team]['members'].push(member);
         tmp_teams[team]['pos'].push(member.pos1);
@@ -387,7 +391,7 @@ app.controller('mainCtl', function($scope, Members) {
         var team_list = get_teams_no_full(team_list, tmp_teams);
         var team_loop_len = team_list.length;
         var start_team_index = random_choose(team_loop_len);
-
+        console.log('-Queue-----------------------------------------------------------')
         for (i = 0; i < queue_length; i ++) {
             var tmp_member = queue[i];
             console.log( (i + 1) + "=>" + tmp_member.nick_name + "|grade " + tmp_member.grade)
@@ -547,7 +551,8 @@ app.controller('mainCtl', function($scope, Members) {
         }
 
         // Output:
-        $scope.final_result = tmp_teams
+        $scope.final_result = tmp_teams;
+        console.log('-Done-----------------------------------------------------------')
     }
 
 });
