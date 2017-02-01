@@ -216,7 +216,7 @@ app.controller('mainCtl', function($scope, Members) {
         }
         console.log(star + member.nick_name + '|G' + member.grade + '|P' + member.pos1 + '-->' + team);
         $scope.member_team_mapping[member.nick_name] = team;
-        addToTeam(member.nick_name, team);
+//        addToTeam(member.nick_name, team);
         un_grouped.splice(un_grouped.indexOf(member), 1);
         tmp_teams[team]['members'].push(member);
         tmp_teams[team]['pos'].push(member.pos1);
