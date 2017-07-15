@@ -94,7 +94,7 @@ Member.objects.bulk_create([
     Member(name='captain', name_chn='王晓铭', nick_name='队长', number=27,
            pos1='前锋', pos2='', pos3='',
            top_star=0, all_pos=0, stamina=0, athletic=1, grade=1),
-    Member(name='henry', name_chn='黄毅', nick_name='亨利', number=28,
+    Member(name='henry', name_chn='黄毅', nick_name='酋王', number=28,
            pos1='防守型中场', pos2='边后卫', pos3='中后卫',
            top_star=0, all_pos=1, stamina=0, athletic=0, grade=6),
     Member(name='lin', name_chn='林舜宇', nick_name='小林', number=32,
