@@ -170,9 +170,11 @@ Member.objects.bulk_create([
            pos1='攻击型中场', pos2='边后卫', pos3='',
            top_star=0, all_pos=0, stamina=0, athletic=0, grade=5),
     Member(name='guoqi', name_chn='郭琦', nick_name='郭琦', number=101,
+           pos1='攻击型中场', pos2='边后卫', pos3='前锋',
+           top_star=0, all_pos=0, stamina=0, athletic=0, grade=5),
+    Member(name='bruce', name_chn='俞星辰', nick_name='布鲁斯', number=101,
            pos1='防守型中场', pos2='攻击型中场', pos3='前锋',
-           top_star=0, all_pos=0, stamina=0, athletic=0, grade=6),
-
+           top_star=1, all_pos=1, stamina=1, athletic=1, grade=2),
 
 ])
 
