@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.db import models
+import sys
 
 
 class Member(models.Model):
@@ -43,7 +44,10 @@ class Member(models.Model):
 
     def __unicode__(self):
         if self.number < 100:
+            reload(sys)  # reload 才能调用 setdefaultencoding 方法
+            sys.setdefaultencoding('utf-8')  # 设置 'utf-8'
             return '{}.{}'.format(self.number, self.nick_name)
+            # return self.nick_name
         else:
             return self.nick_name
 

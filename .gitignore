@@ -64,3 +64,8 @@ bower_components/
 
 # sqlite db
 db.inception
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
