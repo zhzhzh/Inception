@@ -87,7 +87,7 @@
                         <table class="table table-bordered" id="team_table">
                             <thead>
                             <tr>
-                                <th ng-repeat="team in team_list">{$ team $} -- {$ team_size[team] $}人
+                                <th ng-repeat="team in team_list">{$ team $} -- {$ teams[team].length $}人
                                     <img ng-src="/static/pic/{$ jersey_files[final_result[team]['jersey']] $}" class="img_jersey">
                                 </th>
                             </tr>

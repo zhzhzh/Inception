@@ -59,6 +59,7 @@ class Member(models.Model):
             top_star=self.top_star,
             all_pos=self.all_pos,
             stamina=self.stamina,
-            athletic=self.athletic
+            athletic=self.athletic,
+            grade=self.grade
         )
 

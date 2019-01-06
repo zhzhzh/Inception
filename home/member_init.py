@@ -72,7 +72,7 @@ Member.objects.bulk_create([
            top_star=0, all_pos=0, stamina=0, athletic=0, grade=8),
     Member(name='joseph', name_chn='金骁骅', nick_name='色夫', number=20,
            pos1='守门员', pos2='前锋', pos3='',
-           top_star=0, all_pos=0, stamina=0, athletic=1, grade=3),
+           top_star=0, all_pos=0, stamina=0, athletic=1, grade=4),
     Member(name='baogang', name_chn='李宝刚', nick_name='宝刚', number=21,
            pos1='前锋', pos2='攻击型中场', pos3='',
            top_star=1, all_pos=0, stamina=0, athletic=1, grade=2),
@@ -84,7 +84,7 @@ Member.objects.bulk_create([
            top_star=0, all_pos=1, stamina=0, athletic=0, grade=6),
     Member(name='brother', name_chn='沈斌', nick_name='阿哥', number=24,
            pos1='守门员', pos2='前锋', pos3='',
-           top_star=0, all_pos=0, stamina=0, athletic=0, grade=3),
+           top_star=0, all_pos=0, stamina=0, athletic=0, grade=4),
     Member(name='tiejun', name_chn='白铁军', nick_name='铁军', number=25,
            pos1='中后卫', pos2='防守型中场', pos3='边后卫',
            top_star=0, all_pos=1, stamina=1, athletic=0, grade=4),
@@ -94,7 +94,7 @@ Member.objects.bulk_create([
     Member(name='captain', name_chn='王晓铭', nick_name='队长', number=27,
            pos1='前锋', pos2='', pos3='',
            top_star=0, all_pos=0, stamina=0, athletic=1, grade=1),
-    Member(name='henry', name_chn='黄毅', nick_name='亨利', number=28,
+    Member(name='henry', name_chn='黄毅', nick_name='酋王', number=28,
            pos1='防守型中场', pos2='边后卫', pos3='中后卫',
            top_star=0, all_pos=1, stamina=0, athletic=0, grade=6),
     Member(name='lin', name_chn='林舜宇', nick_name='小林', number=32,
@@ -166,6 +166,16 @@ Member.objects.bulk_create([
     Member(name='kevin', name_chn='裔立峰', nick_name='凯文', number=101,
            pos1='攻击型中场', pos2='边后卫', pos3='',
            top_star=0, all_pos=0, stamina=0, athletic=0, grade=8),
+    Member(name='johnson', name_chn='王祥', nick_name='强森', number=101,
+           pos1='攻击型中场', pos2='边后卫', pos3='',
+           top_star=0, all_pos=0, stamina=0, athletic=0, grade=5),
+    Member(name='guoqi', name_chn='郭琦', nick_name='莹川', number=101,
+           pos1='攻击型中场', pos2='边后卫', pos3='前锋',
+           top_star=0, all_pos=0, stamina=0, athletic=0, grade=5),
+    Member(name='bruce', name_chn='俞星辰', nick_name='布鲁斯', number=101,
+           pos1='防守型中场', pos2='攻击型中场', pos3='前锋',
+           top_star=1, all_pos=1, stamina=1, athletic=1, grade=2),
+
 ])
 
 print('Done')
