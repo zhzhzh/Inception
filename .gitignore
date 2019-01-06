@@ -66,6 +66,8 @@ collectedstatic/
 # sqlite db
 db.inception
 
+nohup.out
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
