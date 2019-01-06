@@ -3,12 +3,14 @@
 ### Install guide:
 1. git clone
 2. cd to the project folder
-3. create virtualenv: virtualenv venv
-4. source venv/bin/activate
-5. pip install -r requirements.txt
-6. bower install
-7. python manage.py migrate
-8. python runserver 0.0.0.0:8787
+```
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+bower install
+python manage.py migrate
+python runserver 0.0.0.0:8787
+```
 
 ### Member Init
 cd to project folder and input following command
