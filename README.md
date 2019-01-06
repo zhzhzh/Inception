@@ -12,11 +12,21 @@ python manage.py migrate
 python runserver 0.0.0.0:8787
 ```
 
-### Member Init
+### Member data sync
+member data backup into file member.csv
+
+##### to save data from DB to member.csv
 cd to project folder and input following command
 ```
 source venv/bin/activate
-python home/member_init/py
+python manage.py backup_members
+```
+
+###### to update data from member.csv to DB
+cd to project folder and input following command
+```
+source venv/bin/activate
+python manage.py update_members
 ```
 
 
