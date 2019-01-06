@@ -1,5 +1,5 @@
 ,all_pos,athletic,grade,name,name_chn,nick_name,number,pos1,pos2,pos3,stamina,top_star
-0,False,False,3,chen,陈华,陈老师,88,守门员,,,False,False
+0,False,False,3,chen,陈华,陈老师,1,守门员,,,False,False
 1,False,False,5,blue,王逸洲,蓝少,2,攻击型中场,边后卫,防守型中场,False,False
 2,False,True,7,daqiang,姚强,大强,3,边后卫,,,False,False
 3,False,False,7,vincent,胡焱钧,文森特,4,边后卫,攻击型中场,守门员,False,False
@@ -54,4 +54,3 @@
 52,True,True,2,fish,小鱼,小鱼,101,防守型中场,,,True,True
 53,False,False,7,le,倪乐,阿乐,101,攻击型中场,防守型中场,,False,False
 54,False,False,7,kevin,裔立峰,凯文,101,攻击型中场,边后卫,,False,False
-,,,,,,,,,,,,
