@@ -12,7 +12,6 @@ class Member(models.Model):
         ('攻击型中场', '攻击型中场'),
         ('前锋', '前锋'),
         ('特殊', '特殊'),
-        ('', '-')
     )
 
     GRADE_CHOICES = (
