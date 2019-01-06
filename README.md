@@ -1,5 +1,7 @@
 # Inception
 
+Site: http://54.200.14.34:8787
+
 ### Install guide:
 1. git clone
 2. cd to the project folder
