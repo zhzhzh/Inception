@@ -198,3 +198,5 @@ LOGGING = {
         }
     }
 }
+
+MEMBER_FILE = os.path.join(BASE_DIR, 'members.csv')
