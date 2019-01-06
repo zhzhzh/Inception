@@ -21,5 +21,10 @@ python home/member_init/py
 
 
 ### Admin
+```
+source venv/bin/activate
 python manage.py createsuperuser
+
+```
+
 admin/admin
