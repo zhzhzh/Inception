@@ -10,6 +10,14 @@
 7. python manage.py migrate
 8. python runserver 0.0.0.0:8787
 
+### Member Init
+cd to project folder and input following command
+```
+source venv/bin/activate
+python home/member_init/py
+```
+
+
 ### Admin
 python manage.py createsuperuser
 admin/admin
