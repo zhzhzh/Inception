@@ -1,2 +1,2 @@
-django==1.9.1
+django==1.11.18
 MySQL-python==1.2.5
