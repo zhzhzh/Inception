@@ -2,6 +2,11 @@
 
 Site: http://54.200.14.34:8787
 
+### Server SSH
+```
+ssh -i "EC2-ddh1860-key.pem" ec2-user@ec2-54-200-14-34.us-west-2.compute.amazonaws.com
+```
+
 ### Install guide:
 1. git clone
 2. cd to the project folder
