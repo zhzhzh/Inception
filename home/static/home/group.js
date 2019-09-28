@@ -41,7 +41,7 @@ app.controller('mainCtl', function($scope, Members) {
         'r': 'Red_Jersey_Icon.jpg',
         'b': 'Blue_Jersey_Icon.jpg',
         'y': 'Yellow_Jersey_Icon.jpg',
-        'w': 'White_Jersey_Icon.jpeg',
+        'w': 'White_Jersey_Icon.jpg',
     };
 
     $scope.teams = {
