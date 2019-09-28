@@ -27,6 +27,7 @@ SECRET_KEY = '0l1zq(4ua)#1y)&mroht*tajr6ye7=+7mcf6a)d!lal7!qi=jx'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '54.200.14.34',  #EC2 server
     '0.0.0.0',
     'localhost',
     '127.0.0.1',
