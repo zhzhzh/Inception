@@ -40,7 +40,8 @@ app.controller('mainCtl', function($scope, Members) {
     $scope.jersey_files = {
         'r': 'Red_Jersey_Icon.jpg',
         'b': 'Blue_Jersey_Icon.jpg',
-        'y': 'Yellow_Jersey_Icon.jpg'
+        'y': 'Yellow_Jersey_Icon.jpg',
+        'w': 'White_Jersey_Icon.jpeg',
     };
 
     $scope.teams = {
@@ -518,28 +519,28 @@ app.controller('mainCtl', function($scope, Members) {
 //        }
 
         // process Jersey
-        if ($scope.attend_members.indexOf('蓝少') >= 0) {
-            $scope.has_blue = true;
-        }
+//        if ($scope.attend_members.indexOf('蓝少') >= 0) {
+//            $scope.has_blue = true;
+//        }
 
-        var jersey_list = ['b', 'y', 'r'];
+        var jersey_list = ['w', 'y', 'r'];
         var tmp_team_list = $scope.team_list.filter(function(value) {return true});
         if ($scope.team_index <= 2) {
-            jersey_list = ['b', 'y'];
+            jersey_list = ['r', 'y'];
         }
 
-        if ($scope.has_blue) {
-            var index = $scope.team_list.length;
-            while (index--) {
-                team = $scope.team_list[index];
-                if (has_member(tmp_teams[team]['members'], 'nick_name', '蓝少')) {
-                    tmp_teams[team]['jersey'] = 'b';
-                    jersey_list.splice(jersey_list.indexOf('b'), 1);
-                    tmp_team_list = $scope.team_list.filter(function(value) {return value != team});
-                    break;
-                }
-            }
-        }
+//        if ($scope.has_blue) {
+//            var index = $scope.team_list.length;
+//            while (index--) {
+//                team = $scope.team_list[index];
+//                if (has_member(tmp_teams[team]['members'], 'nick_name', '蓝少')) {
+//                    tmp_teams[team]['jersey'] = 'b';
+//                    jersey_list.splice(jersey_list.indexOf('b'), 1);
+//                    tmp_team_list = $scope.team_list.filter(function(value) {return value != team});
+//                    break;
+//                }
+//            }
+//        }
 
         index = tmp_team_list.length;
         while (index--) {
