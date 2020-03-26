@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+    inception:
+        build: .
+        restart: always
+        ports: # 与宿主机端口映射关系
+            - "8787:8787"
