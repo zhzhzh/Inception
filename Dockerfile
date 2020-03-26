@@ -16,7 +16,9 @@ WORKDIR /usr/src/app
 
 RUN pip install -r requirements.txt
 RUN bower install --allow-root
-RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput && \
+    python manage.py migrate &&\
+    python manage.py update_members
 
 EXPOSE 8787
 CMD exec gunicorn Inception.wsgi:application --bind 0.0.0.0:8787 --workers 3
