@@ -18,7 +18,7 @@ RUN pip install -r requirements.txt
 RUN bower install --allow-root
 RUN python manage.py collectstatic --noinput
 
-EXPOSE 8000
-CMD exec gunicorn Inception.wsgi:application --bind 0.0.0.0:8000 --workers 3
+EXPOSE 8787
+CMD exec gunicorn Inception.wsgi:application --bind 0.0.0.0:8787 --workers 3
 
 
