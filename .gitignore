@@ -75,3 +75,6 @@ nohup.out
 
 #vscode
 .vscode/
+
+#uwsgi
+Inception.pid
