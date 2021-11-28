@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '54.200.14.34',  #EC2 server
+    '54.187.204.17', #EC2 server new IP
     '0.0.0.0',
     'localhost',
     '127.0.0.1',
