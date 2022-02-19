@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:2.7.16
 
 LABEL author="Zhagn Jie"
 
@@ -21,6 +21,6 @@ RUN python manage.py collectstatic --noinput && \
     python manage.py update_members
 
 EXPOSE 8787
-CMD uwsgi --ini uswgi.ini
+CMD exec gunicorn Inception.wsgi:application --bind 0.0.0.0:8787 --workers 3
 
 

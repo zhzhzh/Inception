@@ -1,5 +1,5 @@
-django==3.0.4
-pandas==1.0.3
-gunicorn==20.0.4
+django==3.1.1
+pandas==1.1.1
+# gunicorn==20.0.4
 # conda install --channel https://conda.anaconda.org/conda-forge uwsgi
-uwsgi==2.0.18
+uwsgi==2.0.19
